@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 13
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": 21
     },
     {
       "id": 3,
@@ -47,6 +47,54 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Mariola",
+      "image": "wwww",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "name": "",
+      "image": "",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "",
+      "image": "",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "Mariola Pasko",
+      "image": "rgpbgb,p[eb",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "name": "Renata",
+      "img": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+      "likes": 0,
+      "id": 13
+    },
+    {
+      "name": "Renata",
+      "img": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+      "likes": 0,
+      "id": 14
+    },
+    {
+      "name": "new toy",
+      "img": "",
+      "likes": 0,
+      "id": 15
+    },
+    {
+      "name": "new toy",
+      "img": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+      "likes": 0,
+      "id": 16
     }
   ]
 }
