@@ -43,15 +43,31 @@ function renderToys() {
     let img = document.createElement("img")
     img.src = toy.image
     img.className = "toy-avatar"
-    let pLikes = document.createElement("p")
-    pLikes.innerText = `${toy.likes} Likes`
+    let likes = document.createElement("p")
+    likes.innerText = `${toy.likes} Likes`
     let likeButton = document.createElement("button")
     likeButton.className = "like-btn"
     likeButton.innerText = "Like <3"
-    likeButton.addEventListener("click", e => {
-      addLikes(toy)
+    // Add likes
+    likeButton.addEventListener("click", function (e) {
+      let like = ++toy.likes
+      likes.innerText = `${like} Likes`
+      const configurationObject = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          likes: like
+        })
+      }
+      fetch(`${baseURI}/${toy.id}`, configurationObject)
+        .then(function (response) {
+          return response.json()
+        })
     })
-    card.append(h2Name, img, pLikes, likeButton)
+    card.append(h2Name, img, likes, likeButton)
     toyCollection.append(card)
   }
 
@@ -68,6 +84,7 @@ function renderToys() {
     }
     createToy(newToy)
       .then(renderToy(newToy))
+    e.target.reset()
   })
 
   //tell server to save new toy 
@@ -86,104 +103,10 @@ function renderToys() {
     })
   }
   
-  function addLikes(toy){
-    let pLikes = toy.likes++
-    const configurationObject = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }, 
-      body: JSON.stringify({
-        likes: pLikes
-      })
-    }
-    fetch(`${baseURI}/${toy.id}`, configurationObject)
-    .then(function (response){
-      renderToys()
-    })
-      
-    }
-  
   renderToys()
 });
 
     
-    // function renderToy(toy) {
-      //   const card = document.createElement("div")
-//   card.classList.add("card")
-//   card.innerHTML = `
-//   <h2>${toy.name}</h2>
-//   <img class ="toy-avatar" src="${toy.image}"/>`
-//   const likes = document.createElement("p")
-//   likes.innerText = toy.likes 
-
-//   card.appendChild(likes);
-
-//   likeBtn = document.createElement("button");
-//   likeBtn.innerText = "Like";
-//   likeBtn.classList.add("likeBtn");
-
-//   card.appendChild(likeBtn);
-//   divCollect.appendChild(card)
-
-//   likeBtn.addEventListener("click", function(e) {
-//     toyLikes(newToy)
-//       .then(function (response) {
-//       return response.json()
-//     })
-//   })
-// }
-
- // function addNewtoy(e){
- //   e.preventDefault()
- //   const configurationObject = {
- //     method: "POST",
- //     headers: {
- //       "Content-Type": "application/json",
- //       "Accept": "application/json"
- //     },
- //     body: JSON.stringify({
- //       name: inputName.value,
- //       image: inputImage.value,
- //       likes: 0
- //     }), 
- //     .then(resp => resp.json())
- //       .then(renderToy);
- //     form.reset();
- //     });
-
- // }
-
-// function addToy(newToy) {
-//   const configurationObject = {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Accept": "application/json"
-//     },
-//     body: JSON.stringify(toy)
-//   }
-//   return fetch(baseURI, configurationObject)
-//     .then(function (response) {
-//       return response.json()
-//     }
-//   }
-
-// const form = document.querySelector('.add-toy-form');
-// form.addEventListener('submit', function (e) {
-//   e.preventDefault();
-//   const ToyName = document.querySelector('input[name="name"]').value;
-//   const ToyImg = document.querySelector('input[name="image"]').value;
-//   const newToy = {
-//     name: ToyName,
-//     image: ToyImg,
-//     likes: 0
-//   };
-//   createToy(newToy).then(function (newToy) {
-//     render(newToy);
-//   });
-// });
 
 
 
